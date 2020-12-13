@@ -1,7 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const routes = require('./routes/index');
+const cors = require("cors");
+const routes = require("./routes/index");
+
+app.use(cors());
 
 app.use(express.json());
 
@@ -10,7 +13,7 @@ require("dotenv").config();
 const port = process.env.PORT;
 const dbUrl = process.env.DB_URL;
 
-app.use('/api', routes);
+app.use("/api", routes);
 
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
