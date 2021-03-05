@@ -38,7 +38,8 @@ module.exports = {
     try {
       const tinyUrl = req.params.newUrl;
       const getBigUrl = await findByShortUrl(tinyUrl);
-      if (getBigUrl != "") {
+      console.log(getBigUrl)
+      if (getBigUrl != "" && getBigUrl != null) {
         res.redirect(getBigUrl.bigUrl);
       } else {
         return res.status(404).json({ error: "Given url not found" });
